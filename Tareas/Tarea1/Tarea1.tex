@@ -1,0 +1,68 @@
+\documentclass[answers]{exam}
+
+\usepackage[spanish]{babel}
+\usepackage{minted}
+
+\title{
+  \huge Lenguajes de Programación \\[0.5cm]
+  \LARGE Tarea 1
+}
+
+\author{
+  Camila Alexandra Cruz Miranda \\
+  Oscar Hernández Salinas \\
+  José Ethan Ortega González \\
+  David Pérez Jacome \\
+}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\runningheadrule{}
+\runningheader{Lenguajes de Programación}{Tarea 1}{\date{\today}}
+\footer{}{Página \thepage\ de \numpages}{}
+
+\begin{document}
+\maketitle{}
+\begin{questions}
+  \question{Por cada uno de los miembros del equipo, buscar dos lenguajes de
+    programación distintos e indicar los siguientes datos:}
+  \begin{parts}
+    \part{Nombre del lenguaje.}
+    \part{Nombre de las o los diseñadores.}
+    \part{Año de creación.}
+    \part{Clasificación del lenguaje de acuerdo al: (1) Nivel, (2) Propósito,
+      (3) Estilo/Paradigma.}
+    \part{\}part{Ejemplo de sintaxis y semántica sencillo.}}
+    \part{Ejemplo de biblioteca.}
+    \part{Ejemplo de convención de programación (idiom).}
+  \end{parts}
+  \begin{solution}
+    Aqui van los lenguajes de cada uno.
+  \end{solution}
+
+  \question{Define una función en Racket que calcule la longitud de un número
+    natural, es decir, que calcule el número de dígitos que lo conforman.}
+  \begin{solution}
+    El código es el siguiente:
+    \begin{minted}[frame=lines]{newlisp}
+    (define (digitos n)
+      (let ([m (floor (/ (log n) (log 10)))])
+        (+ m 1)))
+    \end{minted}
+  \end{solution}
+
+  \question{Define una función en Racket que filtre los números positivos de una
+    lista. Es decir, dada una lista con números enteros, devolver una nueva
+    lista con sólo números positivos.}
+  \begin{solution}
+      El código es el siguiente:
+      \begin{minted}[frame=lines]{newlisp}
+      (define (positivos l)
+        (cond
+          [(empty? l) l]
+          [else (if (< (first l) 0)
+                    (positivos (rest l))
+                    (cons (first l) (positivos (rest l))))]))
+      \end{minted}
+    \end{solution}
+\end{questions}
+\end{document}
