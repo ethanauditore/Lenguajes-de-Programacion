@@ -1,59 +1,71 @@
-\documentclass[answers]{exam}
+\documentclass[12pt,letterpaper]{article}
 
 \usepackage[spanish]{babel}
 \usepackage{minted}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{enumitem}
+\usepackage{hyperref}
 
-\title{
-  \huge Lenguajes de Programación \\[0.5cm]
-  \LARGE Tarea 1
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
 }
 
-\author{
-  Camila Alexandra Cruz Miranda \\
-  Oscar Hernández Salinas \\
-  José Ethan Ortega González \\
-  David Pérez Jacome \\
-}
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
 
-\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
-\runningheadrule{}
-\runningheader{Lenguajes de Programación}{Tarea 1}{\date{\today}}
-\footer{}{Página \thepage\ de \numpages}{}
+% Edit these as appropriate
+\newcommand\curso{Lenguajes de Programación}
+\newcommand\numerotarea{1}                  % <-- homework number
+
+\pagestyle{fancyplain}
+\headheight 53pt
+\lhead{\small Camila Alexandra Cruz Miranda \\Oscar Hernández Salinas \\José Ethan Ortega González \\David Pérez Jacome}
+\chead{\textbf{\curso \\Tarea \numerotarea}}
+\rhead{Fecha de entrega: \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
 
 \begin{document}
-\maketitle{}
-\begin{questions}
-  \question{Por cada uno de los miembros del equipo, buscar dos lenguajes de
-    programación distintos e indicar los siguientes datos:}
-  \begin{parts}
-    \part{Nombre del lenguaje.}
-    \part{Nombre de las o los diseñadores.}
-    \part{Año de creación.}
-    \part{Clasificación del lenguaje de acuerdo al: (1) Nivel, (2) Propósito,
-      (3) Estilo/Paradigma.}
-    \part{\}part{Ejemplo de sintaxis y semántica sencillo.}}
-    \part{Ejemplo de biblioteca.}
-    \part{Ejemplo de convención de programación (idiom).}
-  \end{parts}
-  \begin{solution}
-    Aqui van los lenguajes de cada uno.
-  \end{solution}
 
-  \question{Define una función en Racket que calcule la longitud de un número
-    natural, es decir, que calcule el número de dígitos que lo conforman.}
-  \begin{solution}
+\begin{enumerate}
+    \item Por cada uno de los miembros del equipo, buscar dos lenguajes de
+    programación distintos e indicar los siguientes datos:
+    \begin{enumerate}[label=(\alph*)]
+        \item Nombre del lenguaje.
+        \item Nombre de las o los diseñadores.
+        \item Año de creación.
+        \item Clasificación del lenguaje de acuerdo al: 
+        \\(1) Nivel, \\(2) Propósito, \\(3) Estilo/Paradigma.
+        \item Ejemplo de sintaxis y semántica sencillo.
+        \item Ejemplo de biblioteca.
+        \item Ejemplo de convención de programación (idiom).
+    \end{enumerate}
+
+    \item Define una función en Racket que calcule la longitud de un número natural, es decir, que calcule el número de dígitos que lo conforman.
+
     El código es el siguiente:
     \begin{minted}[frame=lines]{newlisp}
     (define (digitos n)
       (let ([m (floor (/ (log n) (log 10)))])
         (+ m 1)))
     \end{minted}
-  \end{solution}
 
-  \question{Define una función en Racket que filtre los números positivos de una
+\item Define una función en Racket que filtre los números positivos de una
     lista. Es decir, dada una lista con números enteros, devolver una nueva
-    lista con sólo números positivos.}
-  \begin{solution}
+    lista con sólo números positivos.
+    
       El código es el siguiente:
       \begin{minted}[frame=lines]{newlisp}
       (define (positivos l)
@@ -63,6 +75,6 @@
                     (positivos (rest l))
                     (cons (first l) (positivos (rest l))))]))
       \end{minted}
-    \end{solution}
-\end{questions}
+      
+\end{enumerate}
 \end{document}
