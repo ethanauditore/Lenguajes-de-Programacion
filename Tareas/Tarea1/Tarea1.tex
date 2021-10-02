@@ -40,6 +40,7 @@
 
 \begin{document}
 
+
 \begin{enumerate}
     \item Por cada uno de los miembros del equipo, buscar dos lenguajes de
     programación distintos e indicar los siguientes datos:
@@ -53,6 +54,369 @@
         \item Ejemplo de biblioteca.
         \item Ejemplo de convención de programación (idiom).
     \end{enumerate}
+        \begin{itemize}
+          \item \textbf{Camila:}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} Wolfram Language.
+                  \item \textbf{Nombre del diseñador:} Stephen Wolfram.
+                  \item \textbf{Año de creación:} 1988, hace 33 años.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de alto nivel.
+                          \item \textbf{Propósito:} Propósito general.
+                          \item \textbf{Estilo/Paradigma:} Multiparadigma,
+                                símbolico, funcional y lógico.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+\begin{minted}[frame=lines]{mathematica}
+(* Esto es un comentario. *)
+
+4 + 3
+(* = 7 *)
+
+1 + 2 * (3 + 4)
+(* = 15 *)
+(* La multiplicación se puede omitir: 1 + 2 (3 + 4) *)
+
+(* Las divisiones regresan números racionales: *)
+3 / 2
+(* = 3/2 *)
+\end{minted}
+                  \item \textbf{Ejemplo de biblioteca:}
+                  \mint{mathematica}| fun = LibraryFunctionLoad["demo", "demo_I_I", {Integer}, Integer] |
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+\begin{minted}[frame=lines]{mathematica}
+(*En vez de cambiar tu nube con la URL completa se puede hacer
+con una palabra que la explique.*)
+$CloudBase = "https://www.test.wolframcloud.com/"
+Output: https://www.test.wolframcloud.com/
+
+$CloudBase = "prd"
+Output: https://www.test.wolframcloud.com/
+\end{minted}
+                \end{itemize}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} Python.
+                  \item \textbf{Nombre del diseñador:} Guido van Rossum.
+                  \item \textbf{Año de creación:} 1991, hace 33 años.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de alto nivel.
+                          \item \textbf{Propósito:} Propósito general.
+                          \item \textbf{Estilo/Paradigma:} Multiparadigma,
+                                orientado a objetos, funcional.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+\begin{minted}[frame=lines]{python}
+# Este es un comentario
+midpoint = 5
+
+# Se crean dos listas vacías
+lower = []; upper = []
+
+# La identación importa para el control de los bloques de código
+# separa los números en inferiores y superiores
+for i in range(10):
+    if (i < midpoint):
+        lower.append(i)
+    else:
+        upper.append(i)
+
+print("lower:", lower)
+print("upper:", upper)
+\end{minted}
+                  \item \textbf{Ejemplo de biblioteca:}
+                  \mint{python}|import matplotlib.pyplot as plt|
+
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+\begin{minted}[frame=lines]{python}
+#Se puede cambiar el valor de dos variables por tuplas
+x = True
+y = False
+x, y = y, x
+x
+# False
+y
+# True
+\end{minted}
+                \end{itemize}
+
+          \item \textbf{Oscar}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} Swift.
+                  \item \textbf{Nombre de los diseñadores:} Chris Lattner, Doug
+                        Gregor, John McCall, Ted Kremenek, Joe Groff, y Apple
+                        Inc..
+                  \item \textbf{Año de creación:} 2010.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de alto nivel.
+                          \item \textbf{Propósito:} Programación de sistemas,
+                                aplicaciones para móviles y de escritorio,
+                                llegando a servicios en la nube.
+                          \item \textbf{Estilo/Paradigma:} Multiparadigma
+                                (Orientado a protocolos, objetos, funcional,
+                                programación imperativa).
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+\begin{minted}[frame=lines]{newlisp}
+func printMessage(message: String) {
+    println(message)
+}
+\end{minted}
+                  \item \textbf{Ejemplo de biblioteca:}
+                        \mint{swift}|import Foundation|
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+\begin{minted}[frame=lines]{newlisp}
+for i in 1...5 {
+  # Código
+}
+\end{minted}
+                \end{itemize}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} R.
+                  \item \textbf{Nombre de los diseñadores:} Ross Ihaka y Robert
+                        Gentleman.
+                  \item \textbf{Año de creación:} 1993.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de alto nivel.
+                          \item \textbf{Propósito:} Investigación científica,
+                                machine learning, minería de datos,
+                                investigación biomédica, bioinformática y
+                                matemáticas financieras.
+                          \item \textbf{Estilo/Paradigma:} Orientado a objetos.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+\begin{minted}[frame=lines]{newlisp}
+while(condicion) {
+  # Código
+}
+\end{minted}
+                  \item \textbf{Ejemplo de biblioteca:}
+                        \mint{r}|library(installr)|
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+\begin{minted}[frame=lines]{newlisp}
+for (i in lista) {
+  # Código
+}
+\end{minted}
+                \end{itemize}
+          \item \textbf{Ethan}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} Rust.
+                  \item \textbf{Nombre de los diseñadores:} Graydon Hoare, Dave
+                        Herman, Brendan Eich.
+                  \item \textbf{Año de creación:} 2010.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de medio nivel.
+                          \item \textbf{Propósito:} Propósito general.
+                          \item \textbf{Estilo/Paradigma:} Multiparadigma.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+                        \begin{enumerate}
+                          \item \textbf{Sintaxis:} Comúnmente, para representar
+                                una variable de alguno tipo numérico en varios
+                                lenguajes se usa la palabra \texttt{int} o
+                                \texttt{float}. En Rust, primero nos debemos de
+                                preguntar de cuantos bits queremos nuestro
+                                número, o si lo queremos con signo. A
+                                continuación se muestra una tabla de todos los
+                                tipos de números en Rust:
+
+                                \begin{center}
+                                  \begin{tabular}{lll}
+                                    Tamaño & Con signo & Sin signo\\
+                                    \hline
+                                    8 bits & i8 & u8\\
+                                    16 bits & i16 & u16\\
+                                    32 bits & i32 & u32\\
+                                    64 bits & i64 & u64\\
+                                    128 bits & i128 & u128\\
+                                    arch & isize & usize\\
+                                  \end{tabular}
+                                \end{center}
+
+                                Entonces, para declarar debemos de usar la
+                                palabra clave \texttt{let}, seguida de un
+                                identificador, el simbolo :, el tipo de número,
+                                el simbolo = y un valor.
+
+                          \item \textbf{Semántica:} Siguiendo la sintaxis
+                                anterior, obtenemos lo siguiente:
+                                \mint{rust}|let n: i32 = 42;|
+                                El significado dado es que a la variable
+                                \texttt{n} se le asigna un tipo entero de 32
+                                bits con signo, el cual tiene un valor numérico
+                                de 42.
+                        \end{enumerate}
+
+                  \item \textbf{Ejemplo de biblioteca:} El equivalente a Rust a
+                        una biblioteca sería un
+                        \href{https://doc.rust-lang.org/book/ch07-01-packages-and-crates.html}{crate}.
+                        Un crate bastante utilizado es
+                        \href{https://crates.io/crates/rand}{rand}, que nos
+                        permite generar números aleatorios.
+
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+                        Rust no tiene constructores como tal, en general, se usa
+                        una función estática para crear un nuevo objeto. Por
+                        ejemplo:
+\begin{minted}[frame=lines]{rust}
+struct Rectangulo {
+    base: u32,
+    altura: u32,
+}
+
+impl Rectangulo {
+    fn new() -> Rectangulo {
+        Rectangulo {
+            base: 0u32,
+            altura: 0u32,
+        }
+    }
+}
+\end{minted}
+                \end{itemize}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} C++.
+                  \item \textbf{Nombre del diseñador:} Bjarne Stroustrup.
+                  \item \textbf{Año de creación:} 1983.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de medio nivel.
+                          \item \textbf{Propósito:} Propósito general.
+                          \item \textbf{Estilo/Paradigma:} Multiparadigma.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+                        \begin{enumerate}
+                          \item \textbf{Sintaxis:} Para poder imprimir algún
+                                texto a la consola, utilizamos
+                                \texttt{std::cout} seguido del operador
+                                \texttt{\<\<} y los caracteres o números como
+                                salida. Cabe mencionar que, para utilizar
+                                \texttt{std::cout}, es necesario incluir la
+                                directiva del preprocesador para poder utilizar
+                                la biblioteca \texttt{iostream}
+                          \item \textbf{Semántica:} Siguiendo la sintaxis
+                                anterior, obtenemos lo siguiente:
+\begin{minted}[frame=lines]{cpp}
+#include <iostream>
+
+int main()
+{
+  std::cout << "Hola, Mundo!";
+    return 0;
+}
+\end{minted}
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de biblioteca:} Una de las bibliotecas
+                        más usadas es \texttt{iostream}, que define a los
+                        objetos de entrada y salida estándar.
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+                        Al igual que en C, en C++ las llaves de una función se
+                        escriben en una línea aparte:
+\begin{minted}[frame=lines]{cpp}
+#include <iostream>
+
+int main()
+{
+  std::cout << "Hola, Mundo!";
+    return 0;
+}
+\end{minted}
+
+                \end{itemize}
+          \item \textbf{David}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} Java.
+                  \item \textbf{Nombre del diseñador:} Sun Microsystems.
+                  \item \textbf{Año de creación:} 1995.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de alto nivel.
+                          \item \textbf{Propósito:} Propósito general.
+                          \item \textbf{Estilo/Paradigma:} Orientación a
+                                objetos, crear aplicaciones (empresariales, web
+                                y escritorio), permite ejecutar un mismo programa
+                                en múltiples sistemas operativos y hace posible
+                                ejecutar el código en sistemas remotos de manera
+                                segura.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+                        \begin{enumerate}
+                          \item \textbf{Sintaxis:} Un ejemplo de sintaxis es el
+                                siguiente:
+\begin{minted}[frame=lines]{java}
+//Ejemplo en java
+int var = 10;
+\end{minted}
+                          \item \textbf{Semántica:} En este caso usando este
+                                mismo ejemplo tenemos una variable de nombre
+                                \textbf{"var"} de tipo \textbf{int} que se
+                                refiere a tipo entero con un valor de
+                                \textbf{10}.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de biblioteca:} Java provee una amplia
+                        funcionalidad para crear nuevas aplicaciones. Un ejemplo
+                        es \textbf{javax.jms}.
+
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+                        Uno de los idioms que posee el lenguaje de programación
+                        java es los nombres de las clases deben ser sustantivos,
+                        en mayúsculas y minúsculas, con la primera letra de cada
+                        palabra interna en mayúscula. El nombre de las
+                        interfaces también debe estar en mayúscula (la primera)
+                        al igual que los nombres de las clases. Use palabras
+                        completas y debe evitar acrónimos y abreviaturas. Por
+                        ejemplo:
+\begin{minted}[frame=lines]{java}
+public class Lenguaje {
+    // código
+}
+\end{minted}
+
+                \end{itemize}
+                \begin{itemize}
+                  \item \textbf{Nombre del lenguaje:} Ruby.
+                  \item \textbf{Nombre del diseñador:} Yukihiro Matsumoto.
+                  \item \textbf{Año de creación:} 1995.
+                  \item \textbf{Clasificación del lenguaje de acuerdo al:}
+                        \begin{enumerate}
+                          \item \textbf{Nivel:} Lenguaje de alto nivel.
+                          \item \textbf{Propósito:} Principalmente en la
+                                programación web a través del framework Ruby on
+                                Rails.
+                          \item \textbf{Estilo/Paradigma:} Orientado a objetos.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de sintaxis y semántica sencillo:}
+                        \begin{enumerate}
+                          \item \textbf{Sintaxis:} Un ejemplo de sintaxis es el
+                                siguiente:
+\begin{minted}[frame=lines]{ruby}
+#Ejemplo en ruby
+x = 10;
+\end{minted}
+                          \item \textbf{Semántica:} En este caso, debemos de
+                                leer esta asignación como el definir una
+                                variable de nombre \textbf{"x"} a la que le
+                                estamos asignando el valor de \textbf{10}.
+                        \end{enumerate}
+                  \item \textbf{Ejemplo de biblioteca:} Las dependencias para
+                        las aplicaciones de Ruby se declaran en un archivo
+                        Gemfile. Por ejemplo:
+\begin{minted}[frame=lines]{ruby}
+source "https://rubygems.org"
+gem "rails"
+\end{minted}
+
+                  \item \textbf{Ejemplo de convención de programación (idiom):}
+                        En Ruby, para declarar constantes se utilizan tenemos
+                        las siguientes opciones:
+                        \mint{ruby}|THIS\_CONSTANT, This\_Constant, ThisConstant.|
+                \end{itemize}
+        \end{itemize}
 
     \item Define una función en Racket que calcule la longitud de un número natural, es decir, que calcule el número de dígitos que lo conforman.
 
