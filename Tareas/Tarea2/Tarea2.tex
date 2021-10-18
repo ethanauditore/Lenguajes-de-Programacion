@@ -2,8 +2,32 @@
 
 \usepackage[spanish]{babel}
 \usepackage{minted}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{geometry}
+
+\usepackage{tikz}
+\usetikzlibrary{mindmap,backgrounds}
+
+\geometry{top=25mm,left=15mm,right=15mm,a4paper}
+
+\newcommand{\materia}{Lenguajes de Programación}
+\newcommand{\tarea}{Tarea 2}
+
+\title{
+  \huge \materia{} \\[0.5cm]
+  \LARGE \tarea{} }
+
+\author{José Ethan Ortega González}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\runningheadrule{}
+\runningheader{\materia{}}{\tarea{}}{\today}
+\footer{}{Página \thepage\ de \numpages}{}
 
 \begin{document}
+\maketitle{}
+\thispagestyle{headandfoot}
 \begin{questions}
   \question{Se quieren representar árboles binarios cuyos únicos nodos
     etiquetados (con elementos de cualquier conjunto) son las hojas. Para ello
@@ -23,7 +47,7 @@
   \end{parts}
   \begin{solution}
     \begin{parts}
-      \part Las funciones son las siguientes:
+      \part{Las funciones son las siguientes:}
 \begin{minted}[frame=lines]{newlisp}
 (define (nh arbol)
   (match arbol
@@ -35,12 +59,129 @@
     [(hoja _) 0]
     [(mkt i d) (add1 (+ (nni i) (nni d)))]))
 \end{minted}
-        \part{Aquí va la demostración}
+      \part
+      \begin{proof}
+        Lo demostraremos por inducción sobre \verb|t|
+        \begin{itemize}
+          \item \textbf{Base de inducción:} \verb|t| = \verb|(hoja a)|. Tenemos
+                lo siguiente:
+
+                \mint{newlisp}|(nh (hoja a)) = 1 = (+ 0 1) = (+ (nni t) 1)|
+                Por lo que queda demostrada la base de inducción.
+          \item \textbf{Hipótesis de inducción:} Supongamos que se cumple para
+                $t_{1}$ y $t_{2}$.
+          \item \textbf{Paso inductivo:} Tenemos que
+
+                \mint{newlisp}|(nh t) = (+ (nh i) (nh d))| Pero por hipótesis de
+                inducción tenemos lo que sigue:
+
+                \mint{newlisp}|(+ (nh i) (nh d)) = (+ (+ (nni i) 1) (+ (nni d) 1))|
+                Y esto, por propiedades de la suma, es igual a:
+
+                \mint{newlisp}|(+ (+ (nni i) 1) (+ (nni d) 1)) = (+ (nni i) (nni d) 2)|
+
+                Por lo tanto,
+                \mint{newlisp}|(nh t) = (+ (nni i) (nni d) 2)|
+
+                Ahora, tenemos que:
+                \mint{newlisp}|(+ (nni t) 1) = (+ (add1 (+ (nni i) (nni d))) 1)|
+
+                Y esto, es igual a:
+                \mint{newlisp}|(+ (add1 (+ (nni i) (nni d))) 1) = (+ (nni i) (nni d) 2)|
+
+                Por lo tanto,
+                \mint{newlisp}|(+ (nni t) 1) = (+ (nni i) (nni d) 2)|
+
+                Por ultimo, concluimos que:
+                \mint{newlisp}|(nh t) = (+ (nni t) 1)|
+                Por lo que queda demostrado.
+        \end{itemize}
+      \end{proof}
     \end{parts}
   \end{solution}
 
+  \newpage{}
+
   \question{Dibuja un mapa mental que muestre las fases de generación código
     ejecutable, sus principales características y elementos involucrados.}
+  \begin{solution}
+    El mapa mental es el siguiente:
+
+    \scalebox{0.9}{
+      \begin{tikzpicture} [ mindmap, concept color = blue!40, every node/.style
+        = {concept}, every extra concept/.append style = { concept color =
+          teal!60 }, grow cyclic, level 1/.append style = { concept color =
+          violet!40, level distance = 4.5cm, sibling angle = 90 }, level
+        2/.append style = { concept color = purple!50, level distance = 4.5cm,
+          sibling angle = 45, }, ]
+        \node (root) {Generación de Código Ejecutable} child {node (lex)
+          {Análisis Léxico} child {node (a1) {Se descompone una cadena en
+              lexemas}} child {node (a2) {Se procesan individualmente o en
+              conjunto}} child {node (a3) {Programa encargado del análisis:
+              analizador léxico (parser)}} } child {node (sint) {Análisis
+            Sintáctico} child { node (b1) {Revisa que el programa cumpla con las
+              reglas sintácticas establecidas.}} child {node (b2) {Se construye
+              una representación para la computadora} } child {node (b3) {Árbol
+              de Sintaxis Abstracta (ASA)} } child {node (b4) {Programa
+              encargado del análisis: analizador sintáctico (parser)} } } child
+        {node (sem) {Análisis Semántico} child {node (c1) {Revisa que el
+              programa tenga sentido}} child { node (c2) {Si tiene sentido,se le
+              da un significado a lo escrito por el programador.}} child {node
+            (c3) {Programa encargado del análisis: analizador semántico}} child
+          {node (c4) {Se mandará el resultado al interprete o compilará el
+              código}} } child {node (trans) {Trans\-formaciones} child {node
+            (d1) {Se transforma el código escrito por el programador}} child
+          {node (d2) {Tiene fin de cambiar la estructura del código.}} child
+          {node (d3) {Facilita alguno de los análisis anteriores y/o
+              posteriores}} child {node (d4) {Eliminar azúcar sintáctica,
+              verificación de tipos, etc.}} };
+
+        \node [extra concept] at (-4,0) {La generación de código ejecutable
+          empieza en el análisis léxico};
+
+        \path (root) to[circle connection bar switch color=from (blue!40) to
+        (violet!40)] (lex); \path (root) to[circle connection bar switch
+        color=from (blue!40) to (violet!40)] (sint); \path (root) to[circle
+        connection bar switch color=from (blue!40) to (violet!40)] (sem); \path
+        (root) to[circle connection bar switch color=from (blue!40) to
+        (violet!40)] (trans);
+
+        \path (lex) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (a1); \path (lex) to[circle connection bar switch
+        color=from (violet!40) to (purple!50)] (a2); \path (lex) to[circle
+        connection bar switch color=from (violet!40) to (purple!50)] (a3);
+
+        \path (sint) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (b1); \path (sint) to[circle connection bar switch
+        color=from (violet!40) to (purple!50)] (b2); \path (sint) to[circle
+        connection bar switch color=from (violet!40) to (purple!50)] (b3); \path
+        (sint) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (b4);
+
+        \path (sem) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (c1); \path (sem) to[circle connection bar switch
+        color=from (violet!40) to (purple!50)] (c2); \path (sem) to[circle
+        connection bar switch color=from (violet!40) to (purple!50)] (c3); \path
+        (sem) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (c4);
+
+        \path (trans) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (d1); \path (trans) to[circle connection bar switch
+        color=from (violet!40) to (purple!50)] (d2); \path (trans) to[circle
+        connection bar switch color=from (violet!40) to (purple!50)] (d3); \path
+        (trans) to[circle connection bar switch color=from (violet!40) to
+        (purple!50)] (d4);
+
+        \begin{pgfonlayer}{background}
+          \draw [concept connection] (lex) edge (sint) (sint) edge (sem) (sem)
+          edge (trans);
+        \end{pgfonlayer}
+      \end{tikzpicture}
+    }
+
+  \end{solution}
+
+  \newpage{}
 
   \question{Dadas las siguientes expresiones de WAE en sintaxis concreta, da su
     respectiva representación en sintaxis abstracta por medio de los Árboles de
@@ -56,6 +197,7 @@
       {+ a {- b 5}}}}
 \end{verbatim}}
     \end{parts}}
+    \vspace{-1em}
   \begin{solution}
     \begin{parts}
       \part{\verb|(add (num 18) (sub (num 15) (add (num 40) (num 5))))|}
@@ -63,8 +205,8 @@
         donde solo está el 40 y en la suma principal.}
       \part
 \begin{verbatim}
-(with 'a (num 2)
-   (with 'b (add (id 'a) (id '))
+(with (id 'a) (num 2)
+   (with (id 'b) (add (id 'a) (id 'a))
       (add (id 'a) (sub (id 'b) (num 5)))))
 \end{verbatim}
     \end{parts}
@@ -76,6 +218,7 @@
       \part{$\lambda abc.\lambda cde.acbdce$}
       \part{$(\lambda x.(\lambda xy.y) (\lambda zw.w)) (\lambda uv.v)$}
     \end{parts}
+    \vspace{-1ex}
   \begin{solution}
     \begin{parts}
       \part{$\lambda a.\lambda b.\lambda c.abc$}
@@ -89,13 +232,28 @@
     \begin{parts}
       \part{$\lambda x.\lambda y.(\lambda x.y \lambda y.x)$}
       \part{$\lambda x.(x (\lambda y.(\lambda x.x y) x))$}
-      \part{$\lambda a.(\lambda b.a \lambda b (\lambda a.a b))$}
+      \part{$\lambda a.(\lambda b.a \lambda b (\lambda a.ab))$}
     \end{parts}
+    \vspace{-1ex}
     \begin{solution}
       \begin{parts}
-        \part{$\lambda x.\lambda y.(\lambda x.y \lambda y.x)$}
-        \part{$\lambda x.(x (\lambda y.(\lambda x.x y) x))$}
-        \part{$\lambda a.(\lambda b.a \lambda b (\lambda a.a b))$}
+        \part{Tenemos lo siguiente:
+          \begin{align*}
+            \lambda x.\lambda y.(\lambda x.y \lambda y.x) &\equiv_{\alpha} \lambda x.\lambda y.(\lambda x.y \lambda y.x) [y:=w] \\
+                                  &\equiv_{\alpha} \lambda x. \lambda w.(\lambda x.w. \lambda y.x) [x:=z] \\
+                                  &\equiv_{\alpha} \lambda x. \lambda w.(\lambda z.w. \lambda y.z)
+          \end{align*}}
+        \part{Tenemos lo siguiente:
+          \begin{align*}
+            \lambda x.(x (\lambda y.(\lambda x.x y) x)) &\equiv_{\alpha} \lambda x.(x (\lambda y.(\lambda x.x y) x)) [x:=w] \\
+                                      &\equiv_{\alpha}\lambda x.(x (\lambda y.(\lambda w.w y) x))
+          \end{align*}}
+        \part{Tenemos lo siguiente:
+          \begin{align*}
+            \lambda a.(\lambda b.a \lambda b (\lambda a.a b)) &\equiv_{\alpha} \lambda a.(\lambda b.a \lambda b (\lambda a.ab)) [b:=c] \\
+                                      &\equiv_{\alpha} \lambda a.(\lambda b.a \lambda c (\lambda a.ac)) [a:=d] \\
+                                      &\equiv_{\alpha} \lambda a.(\lambda b.a \lambda c (\lambda d.dc))
+          \end{align*}}
     \end{parts}
     \end{solution}
 \end{questions}
