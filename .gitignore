@@ -3,4 +3,6 @@
 *.log
 tmp/
 *.aux
-*.auctex
+*.auctex*
+*.synctex*
+_minted*
