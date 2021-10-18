@@ -1,0 +1,83 @@
+\documentclass[answers]{exam}
+
+\usepackage[spanish]{babel}
+\usepackage{amsmath}
+
+\newcommand{\materia}{Lenguajes de Programación}
+\newcommand{\tarea}{Puntos extra}
+
+\title{
+  \huge \materia{} \\[0.5cm]
+  \LARGE \tarea{} }
+
+\author{José Ethan Ortega González}
+
+\renewcommand{\solutiontitle}{\noindent\textbf{Solución:}\par\noindent}
+\runningheadrule{}
+\runningheader{\materia{}}{\tarea{}}{\today}
+\footer{}{Página \thepage\ de \numpages}{}
+\pointpoints{pt}{pts}
+
+\begin{document}
+\maketitle{}
+\thispagestyle{headandfoot}
+\begin{questions}
+  \question[1] Realizar el cálculo del producto $3 \times 3$ usando las definiciones
+  del cálculo lambda.
+  \begin{solution}
+    \begin{align*}
+      (\lambda x.\lambda y.\lambda a.x(ya))33
+      &\to_{\beta} (\lambda y.\lambda a.3(ya))3 \\
+      &\to_{\beta} \lambda a.3(3a) \\
+      &=_{def} \lambda a.3((\lambda s.\lambda z.s(s(sz)))a) \\
+      &\to_{\beta} \lambda a.3(\lambda z.a(a(az))) \\
+      &=_{def} \lambda a.((\lambda s.\lambda z.s(s(sz)))(\lambda z.a(a(az)))) \\
+      &\to_{\beta} \lambda a.(\lambda z.(\lambda z.a(a(az)))((\lambda z.a(a(az)))((\lambda z.a(a(az)))z))) \\
+      &\to_{\beta} \lambda a.(\lambda z.(\lambda z.a(a(az)))((\lambda z.a(a(az)))(a(a(az))))) \\
+      &\to_{\beta} \lambda a.(\lambda z.(\lambda z.a(a(az)))(a(a(a(a(a(az))))))) \\
+      &\to_{\beta} \lambda a.\lambda z.a(a(a(a(a(a(a(a(az)))))))) \\
+      &\equiv_{\alpha} \lambda s.\lambda z.s(s(s(s(s(s(s(s(sz)))))))) \\
+      &=_{def} 9
+    \end{align*}
+  \end{solution}
+
+  \question[1] Realizar la tabla de verdad de la conjunción usando las
+  definiciones de cálculo lambda.
+  \begin{gather*}
+    \land =_{def} \lambda x.\lambda y.xyF
+  \end{gather*}
+  \vspace{-3em}
+  \begin{solution}
+    \begin{align*}
+      &\land FF &
+      &\land FT &
+      &\land TF &
+      &\land TT \\
+      &=_{def} (\lambda x.\lambda y.xyF)FF &
+      &=_{def} (\lambda x.\lambda y.xyF)FT &
+      &=_{def} (\lambda x.\lambda y.xyF)TF &
+      &=_{def} (\lambda x.\lambda y.xyF)TT \\
+      &\to_{\beta} (\lambda y.FyF)F &
+      &\to_{\beta} (\lambda y.FyF)T &
+      &\to_{\beta} (\lambda y.TyF)F &
+      &\to_{\beta} (\lambda y.TyF)T \\
+      &\to_{\beta} FFF &
+      &\to_{\beta} FTF &
+      &\to_{\beta} TFF &
+      &\to_{\beta} TTF \\
+      &=_{def} (\lambda x.\lambda y.y)FF &
+      &=_{def} (\lambda x.\lambda y.y)TF &
+      &=_{def} (\lambda x.\lambda y.x)FF &
+      &=_{def} (\lambda x.\lambda y.x)TF \\
+      &\to_{\beta} (\lambda y.y)F &
+      &\to_{\beta} (\lambda y.y)F &
+      &\to_{\beta} (\lambda y.F)F &
+      &\to_{\beta} (\lambda y.T)F \\
+      &\to_{\beta} F &
+      &\to_{\beta} F &
+      &\to_{\beta} F &
+      &\to_{\beta} T \\
+    \end{align*}
+  \end{solution}
+\end{questions}
+\end{document}
