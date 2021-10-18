@@ -1,0 +1,102 @@
+\documentclass[answers]{exam}
+
+\usepackage[spanish]{babel}
+\usepackage{minted}
+
+\begin{document}
+\begin{questions}
+  \question{Se quieren representar árboles binarios cuyos únicos nodos
+    etiquetados (con elementos de cualquier conjunto) son las hojas. Para ello
+    se utiliza la siguiente definición recursiva de árboles:}
+\begin{minted}[frame=lines]{newlisp}
+(define (any? a) #t)
+
+(define-type Arbol
+  [hoja (a any?)]
+  [mkt (t1 Arbol?) (t2 Arbol?)])
+\end{minted}
+  \begin{parts}
+    \part{Definir las funciones recursivas nh, nni que calculan el número de
+      hojas y el número de nodos internos (los que no son hojas) en un árbol
+      respectivamente.}
+    \part{Demostrar que \verb|(nh t) = (+ (nni t) 1)|}
+  \end{parts}
+  \begin{solution}
+    \begin{parts}
+      \part Las funciones son las siguientes:
+\begin{minted}[frame=lines]{newlisp}
+(define (nh arbol)
+  (match arbol
+    [(hoja _) 1]
+    [(mkt i d) (+ (nh i) (nh d))]))
+
+(define (nni arbol)
+  (match arbol
+    [(hoja _) 0]
+    [(mkt i d) (add1 (+ (nni i) (nni d)))]))
+\end{minted}
+        \part{Aquí va la demostración}
+    \end{parts}
+  \end{solution}
+
+  \question{Dibuja un mapa mental que muestre las fases de generación código
+    ejecutable, sus principales características y elementos involucrados.}
+
+  \question{Dadas las siguientes expresiones de WAE en sintaxis concreta, da su
+    respectiva representación en sintaxis abstracta por medio de los Árboles de
+    Sintaxis Abstracta correspondientes. En caso de no poder generar el árbol,
+    justificar.
+    \begin{parts}
+      \part{\verb|{+ 18 { - 15 {+ 40 5}}}|}
+      \part{\verb|{+ { - 15 {+ 40}}}|}
+      \part{
+\begin{verbatim}
+{with {a 2}
+   {with {b {+ a a}}
+      {+ a {- b 5}}}}
+\end{verbatim}}
+    \end{parts}}
+  \begin{solution}
+    \begin{parts}
+      \part{\verb|(add (num 18) (sub (num 15) (add (num 40) (num 5))))|}
+      \part{No se puede general el árbol, porque falta un argumento en la suma
+        donde solo está el 40 y en la suma principal.}
+      \part
+\begin{verbatim}
+(with 'a (num 2)
+   (with 'b (add (id 'a) (id '))
+      (add (id 'a) (sub (id 'b) (num 5)))))
+\end{verbatim}
+    \end{parts}
+  \end{solution}
+
+  \question{Currifica cada uno de los siguientes términos:}
+    \begin{parts}
+      \part{$\lambda abc.abc$}
+      \part{$\lambda abc.\lambda cde.acbdce$}
+      \part{$(\lambda x.(\lambda xy.y) (\lambda zw.w)) (\lambda uv.v)$}
+    \end{parts}
+  \begin{solution}
+    \begin{parts}
+      \part{$\lambda a.\lambda b.\lambda c.abc$}
+      \part{$\lambda a.\lambda b.\lambda c.(\lambda c.\lambda d.\lambda e.acbdce)$}
+      \part{$(\lambda x.(\lambda x.\lambda y.y) (\lambda z.\lambda w.w)) (\lambda u.\lambda v.v)$}
+    \end{parts}
+  \end{solution}
+
+  \question{Para cada uno de los siguientes términos, aplica $\alpha$-conversiones para
+    obtener términos donde todas las variables de ligado sean distintas.}
+    \begin{parts}
+      \part{$\lambda x.\lambda y.(\lambda x.y \lambda y.x)$}
+      \part{$\lambda x.(x (\lambda y.(\lambda x.x y) x))$}
+      \part{$\lambda a.(\lambda b.a \lambda b (\lambda a.a b))$}
+    \end{parts}
+    \begin{solution}
+      \begin{parts}
+        \part{$\lambda x.\lambda y.(\lambda x.y \lambda y.x)$}
+        \part{$\lambda x.(x (\lambda y.(\lambda x.x y) x))$}
+        \part{$\lambda a.(\lambda b.a \lambda b (\lambda a.a b))$}
+    \end{parts}
+    \end{solution}
+\end{questions}
+\end{document}
